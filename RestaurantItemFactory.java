@@ -4,20 +4,19 @@ public class RestaurantItemFactory {
     public static IRestaurantItem createRestaurantItem(String type){
         Scanner scan = new Scanner(System.in);
 
-        switch(type){
-            case "Food":
-                System.out.println();
+        switch(type.toLowerCase()){
+            case "food":
+                System.out.println("");
                 break;
-            case "Beverage" :
+            case "beverage" :
                 break;
-            case "Dessert" :
+            case "dessert" :
                 break;
         }
         return null;
     }
 
-    public static void getDetailedMessage(String type){
-        System.out.println("What kind of item are you ordering (food/beverage/dessert)");
-    }
+
+
 
 }

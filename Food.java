@@ -11,8 +11,35 @@ public class Food implements IRestaurantItem{
         this.notes = notes;
     }
 
+    String getName(){
+        return name;
+    }
+    Size getSize(){
+        return size;
+    }
+    double getPrice(){
+        return price;
+    }
 
+    String getNotes(){
+        return notes;
+    }
 
+    void setName(String newName){
+        this.name = name;
+    }
+
+    void setSize(Size newSize){
+        this.size = size;
+    }
+
+    void setPrice(double newPrice){
+        this.price = price;
+    }
+
+    void setNotes(String newNotes){
+        this.notes = notes;
+    }
     @Override
     public void printItemInfo() {
 
