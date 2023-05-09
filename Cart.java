@@ -11,6 +11,13 @@ public class Cart {
         cart.add(newItem);
     }
 
+    void printCartContents(){
+        for(int i = 0; i < cart.size(); i ++){
+            cart.get(i).printItemInfo();
+
+        }
+    }
+
 
 
 }

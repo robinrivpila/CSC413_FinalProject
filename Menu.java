@@ -31,6 +31,7 @@ public class Menu {
                         addItemToCart();
                         break;
                     case 3:
+                        viewCart();
                         break;
                     case 4:
                         break;
@@ -74,6 +75,10 @@ public class Menu {
         }catch (Exception e){
             e.getMessage();
         }
+    }
+
+    public void viewCart(){
+        cart.printCartContents();
     }
 
 

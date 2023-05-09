@@ -1,21 +1,16 @@
 public class Food implements IRestaurantItem{
     private String name;
-    private Size size;
     private double price;
     private String notes;
 
-    public Food(String name, Size size, double price, String notes){
+    public Food(String name, String notes){
         this.name = name;
-        this.size = size;
-        this.price = price;
+        price = 5.50;
         this.notes = notes;
     }
 
     String getName(){
         return name;
-    }
-    Size getSize(){
-        return size;
     }
     double getPrice(){
         return price;
@@ -29,10 +24,6 @@ public class Food implements IRestaurantItem{
         this.name = name;
     }
 
-    void setSize(Size newSize){
-        this.size = size;
-    }
-
     void setPrice(double newPrice){
         this.price = price;
     }
@@ -42,11 +33,9 @@ public class Food implements IRestaurantItem{
     }
     @Override
     public void printItemInfo() {
-
+        System.out.println("\n" + name +
+                            " $" + price +
+                            "\n"  + "\t-" + notes);
     }
 
-    @Override
-    public String getType() {
-        return null;
-    }
 }

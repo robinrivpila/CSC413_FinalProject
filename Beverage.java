@@ -14,11 +14,11 @@ public class Beverage implements IRestaurantItem{
 
     @Override
     public void printItemInfo() {
-
+        System.out.println("\nName: " + name +
+                            "\nSweetness: " + sweetnessLevel +
+                            "\nIce Level: " + iceLevel.name() +
+                            "\nPrice: " + price);
     }
 
-    @Override
-    public String getType() {
-        return null;
-    }
+
 }
