@@ -4,7 +4,20 @@ import java.util.Scanner;
 
 public class Menu {
     Scanner scan = new Scanner(System.in);
-    private String[] foodArrMenu = {"Burger", "Ramen", "Pizza", "Sushi", "Fried Chicken"};
+    Food foodItem1 = new Food("Burger" , 5.50, "");
+    Food foodItem2 = new Food("Ramen", 9.25, "");
+    Food foodItem3 = new Food("Medium Pizza",10.75, "" );
+    Food foodItem4 = new Food("California roll", 8.45, "" );
+    Food foodItem5 = new Food("Whole Fried Chicken", 20.60, "");
+    Beverage bevItem1 = new Beverage("Ice Tea", 0, IceLevel.REGULAR, 1.50);
+    Beverage bevItem2 = new Beverage("Mango Lemonade", 0, IceLevel.REGULAR, 2.50);
+    Beverage bevItem3 = new Beverage("Thai Ice Tea w/ Boba", 0, IceLevel.REGULAR, 4.50);
+    Beverage bevItem4 = new Beverage("Coffee", 0, IceLevel.REGULAR, 1.25);
+    Beverage bevItem5 = new Beverage("Water", 0, IceLevel.REGULAR, 0.00);
+    private Food[] foodArrMenu = {foodItem1, foodItem2, foodItem3, foodItem4, foodItem5};
+    private Beverage[] bevArrMenu = {bevItem1, bevItem2, bevItem3, bevItem4,bevItem5};
+
+
     private Cart cart =  new Cart();
 
 
@@ -26,6 +39,8 @@ public class Menu {
                     case 1:
                         System.out.println("Food Menu: ");
                         printMenu(foodArrMenu);
+                        System.out.println("Beverage Menu:");
+                        printMenu(bevArrMenu);
                         break;
                     case 2:
                         addItemToCart();
@@ -50,9 +65,11 @@ public class Menu {
 
     }
 
-    public void printMenu(String[] array){
+    public void printMenu(IRestaurantItem[] array){
         for(int i = 0; i < array.length; i++){
-            System.out.println((i+1) + ". " + array[i]);
+            System.out.print((i+1) + ". " );
+            array[i].printGeneralInfo();
+
         }
     }
 
@@ -61,16 +78,22 @@ public class Menu {
             RestaurantItemFactory factory = new RestaurantItemFactory();
             System.out.println("What type of item would you like to order(food/beverage/dessert)?");
             String foodType = scan.next();
+            IRestaurantItem restaurantItem = null;
             switch (foodType){
                 case "food":
                     printMenu(foodArrMenu);
+                   restaurantItem = factory.createRestaurantItem(foodType.toLowerCase(),foodArrMenu);
                     break;
                 case "beverage" :
+                    printMenu(bevArrMenu);
+                    restaurantItem = factory.createRestaurantItem(foodType.toLowerCase(), bevArrMenu);
                     break;
                 case "dessert":
                     break;
+                default:
+
             }
-            IRestaurantItem restaurantItem = factory.createRestaurantItem(foodType.toLowerCase());
+
             cart.addItem(restaurantItem);
         }catch (Exception e){
             e.getMessage();

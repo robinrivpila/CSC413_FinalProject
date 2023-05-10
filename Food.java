@@ -3,9 +3,10 @@ public class Food implements IRestaurantItem{
     private double price;
     private String notes;
 
-    public Food(String name, String notes){
+    public Food(String name,double price,  String notes){
         this.name = name;
-        price = 5.50;
+        //price = 5.50;
+        this.price = price;
         this.notes = notes;
     }
 
@@ -38,4 +39,8 @@ public class Food implements IRestaurantItem{
                             "\n"  + "\t-" + notes);
     }
 
+    @Override
+    public void printGeneralInfo(){
+        System.out.print(name + " " + "$" + price + "\n");
+    }
 }
