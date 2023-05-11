@@ -14,8 +14,14 @@ public class Menu {
     Beverage bevItem3 = new Beverage("Thai Ice Tea w/ Boba", 0, IceLevel.REGULAR, 4.50);
     Beverage bevItem4 = new Beverage("Coffee", 0, IceLevel.REGULAR, 1.25);
     Beverage bevItem5 = new Beverage("Water", 0, IceLevel.REGULAR, 0.00);
+    Dessert dessertItem1 = new Dessert("Pizookie", 9.50, "");
+    Dessert dessertItem2 = new Dessert("Chocolate Cake slice" , 5.00, "" );
+    Dessert dessertItem3 = new Dessert("Original Cheese Cake Slice",7.50, "" );
+    Dessert dessertItem4 = new Dessert("Ice Cream", 2.70, "");
+    Dessert dessertItem5 = new Dessert("Lava Brownie Cake", 8.50, "");
     private Food[] foodArrMenu = {foodItem1, foodItem2, foodItem3, foodItem4, foodItem5};
     private Beverage[] bevArrMenu = {bevItem1, bevItem2, bevItem3, bevItem4,bevItem5};
+    private Dessert[] dessertArrMenu = {dessertItem1, dessertItem2, dessertItem3, dessertItem4, dessertItem5};
 
 
     private Cart cart =  new Cart();
@@ -29,7 +35,7 @@ public class Menu {
                 System.out.println("1)View menu");
                 System.out.println("2)Add item to cart");
                 System.out.println("3)View cart");
-                System.out.println("4)View monthly revenue");
+                System.out.println("4)View daily revenue");
                 System.out.println("5)Checkout and Exit");
                 System.out.println("6)Exit");
 
@@ -41,6 +47,8 @@ public class Menu {
                         printMenu(foodArrMenu);
                         System.out.println("Beverage Menu:");
                         printMenu(bevArrMenu);
+                        System.out.println("Dessert Menu");
+                        printMenu(dessertArrMenu);
                         break;
                     case 2:
                         addItemToCart();
@@ -79,7 +87,7 @@ public class Menu {
             System.out.println("What type of item would you like to order(food/beverage/dessert)?");
             String foodType = scan.next();
             IRestaurantItem restaurantItem = null;
-            switch (foodType){
+            switch (foodType.toLowerCase()){
                 case "food":
                     printMenu(foodArrMenu);
                    restaurantItem = factory.createRestaurantItem(foodType.toLowerCase(),foodArrMenu);
@@ -89,6 +97,8 @@ public class Menu {
                     restaurantItem = factory.createRestaurantItem(foodType.toLowerCase(), bevArrMenu);
                     break;
                 case "dessert":
+                    printMenu(dessertArrMenu);
+                    restaurantItem = factory.createRestaurantItem(foodType.toLowerCase(), dessertArrMenu);
                     break;
                 default:
 

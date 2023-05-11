@@ -1,11 +1,11 @@
-public class Food implements IRestaurantItem{
+public class Dessert implements IRestaurantItem{
     private String name;
+
     private double price;
     private String notes;
 
-    public Food(String name,double price,  String notes){
+    public Dessert(String name, double price, String notes){
         this.name = name;
-        //price = 5.50;
         this.price = price;
         this.notes = notes;
     }
@@ -13,35 +13,28 @@ public class Food implements IRestaurantItem{
     String getName(){
         return name;
     }
+
     @Override
     public double getPrice(){
         return price;
     }
 
-    String getNotes(){
-        return notes;
-    }
-
     void setName(String newName){
-        this.name = name;
+        this.name = newName;
     }
 
     void setPrice(double newPrice){
-        this.price = price;
-    }
-
-    void setNotes(String newNotes){
-        this.notes = notes;
+        this.price = newPrice;
     }
     @Override
     public void printItemInfo() {
         System.out.println("\n" + name +
-                            " $" + price +
-                            "\n"  + "\t-" + notes);
+                " $" + price +
+                "\n"  + "\t-" + notes);
     }
 
     @Override
-    public void printGeneralInfo(){
+    public void printGeneralInfo() {
         System.out.print(name + " " + "$" + price + "\n");
     }
 }

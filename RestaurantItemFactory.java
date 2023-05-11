@@ -33,7 +33,13 @@ public class RestaurantItemFactory {
                 Beverage newBev = new Beverage(((Beverage)menuArray[bevItemNum-1]).getName(), sweetnessLvl, iceLevelActual, ((Beverage)menuArray[bevItemNum-1]).getPrice());
                 return newBev;
             case "dessert" :
-                break;
+                System.out.println("Which item number would you like to add to cart? ");
+                int dessertItemNum = scan.nextInt();
+                System.out.println("Do you have any specific preferences for your dessert item? ");
+                scan.next();
+                notes = scan.nextLine();
+                Dessert newDessert = new Dessert(((Dessert)menuArray[dessertItemNum-1]).getName(),((Dessert)menuArray[dessertItemNum-1]).getPrice(), notes );
+                return newDessert;
         }
         return null;
     }

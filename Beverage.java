@@ -27,16 +27,16 @@ public class Beverage implements IRestaurantItem{
         return iceLevel;
     }
 
-    double getPrice(){
+    @Override
+    public double getPrice(){
         return price;
     }
     @Override
     public void printItemInfo() {
-        //NEED TO REFORMAT THE SAME WAY I DID FOR FOOD
-        System.out.println("\nName: " + name +
-                            "\nSweetness: " + sweetnessLevel +
-                            "\nIce Level: " + iceLevel.name() +
-                            "\nPrice: " + price);
+        System.out.println("\n" + name +
+                " $" + price +
+                "\n"  + "\t-" + sweetnessLevel + " sweetness" +
+                "\n" + "\t-" + iceLevel.name() + " ice");
     }
 
     @Override
