@@ -1,4 +1,6 @@
+import java.sql.Array;
 import java.sql.SQLOutput;
+import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -25,6 +27,7 @@ public class Menu {
 
 
     private Cart cart =  new Cart();
+    private ArrayList<Cart> carts = new ArrayList<Cart>();
 
 
     public void mainMenu(){
@@ -35,8 +38,8 @@ public class Menu {
                 System.out.println("1)View menu");
                 System.out.println("2)Add item to cart");
                 System.out.println("3)View cart");
-                System.out.println("4)View daily revenue");
-                System.out.println("5)Checkout and Exit");
+                System.out.println("4)Checkout and Exit");
+                System.out.println("5)View daily revenue");
                 System.out.println("6)Exit");
 
                 int userInput = scan.nextInt();
@@ -51,16 +54,20 @@ public class Menu {
                         printMenu(dessertArrMenu);
                         break;
                     case 2:
+                        //Cart newCart = createCart();
+                        //carts.add(newCart);
                         addItemToCart();
                         break;
                     case 3:
                         viewCart();
                         break;
                     case 4:
+                        checkOut();
                         break;
                     case 5:
                         break;
                     case 6:
+                        //MAKE A "ARE YOU SURE YOU WANT TO EXIT" METHOD
                         isInUse = false;
                         break;
                 }
@@ -101,9 +108,7 @@ public class Menu {
                     restaurantItem = factory.createRestaurantItem(foodType.toLowerCase(), dessertArrMenu);
                     break;
                 default:
-
             }
-
             cart.addItem(restaurantItem);
         }catch (Exception e){
             e.getMessage();
@@ -113,6 +118,32 @@ public class Menu {
     public void viewCart(){
         cart.printCartContents();
     }
+
+    public void checkOut(){
+        System.out.println("Would you like to checkout? (yes/no)");
+        String userCheckoutChoice = scan.next();
+        System.out.println("Users choice: " + userCheckoutChoice);
+        if(userCheckoutChoice.equals("yes")) {
+            System.out.println("Would you like to tip? (y/n)");
+            String userTipQ = scan.next();
+            if (userTipQ.equals("y")) {
+                System.out.println("What percentage would you like to tip?(0-100)");
+                double userTipPercent = scan.nextDouble();
+                cart.calculateTip(userTipPercent);
+                cart.printBill();
+                System.out.println("Thank you for coming! Hope you enjoyed your meal!");
+            }else{
+                cart.printBill();
+            }
+        }
+    }
+
+    public Cart createCart(){
+        Cart newCart = new Cart();
+        return newCart;
+    }
+
+
 
 
 }
