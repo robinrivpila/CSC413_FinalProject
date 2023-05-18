@@ -2,14 +2,23 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
 
+/**
+ * The Cart class has an array list that holds
+ * all of the IRestaurantItem objects that a
+ * user adds to their cart. It also stores the
+ * subtotal, total, and a tip that the user
+ * chooses.
+ */
 public class Cart {
     private ArrayList<IRestaurantItem> cart;
     private double subtotal;
     private double total;
     private double tip;
-
     private LocalDate date;
 
+    /**
+     * Class constructor that initializes
+     */
     public Cart(){
         subtotal = 0;
         total = 0;

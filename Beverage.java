@@ -14,7 +14,9 @@ public class Beverage implements IRestaurantItem{
     private double price;
 
     /**
-     * Class constructor
+     * Class constructor that initializes
+     * the name, the sweetness level, and
+     * the price of the beverage object
      * @param name
      * @param sweetnessLevel
      * @param price
@@ -22,7 +24,6 @@ public class Beverage implements IRestaurantItem{
     public Beverage(String name, int sweetnessLevel, double price){
         this.name = name;
         this.sweetnessLevel = sweetnessLevel;
-
         this.price = price;
     }
 
@@ -38,6 +39,12 @@ public class Beverage implements IRestaurantItem{
     public double getPrice(){
         return price;
     }
+
+    /**
+     * This method prints out the specifics
+     * of the beverage method that includes
+     * its name, price, and sweetness percent
+     */
     @Override
     public void printItemInfo() {
         System.out.println("\n" + name +
@@ -46,6 +53,11 @@ public class Beverage implements IRestaurantItem{
         );
     }
 
+    /**
+     * This method prints out the general information
+     * about the object, and that includes only
+     * the name of the beverage and its price.
+     */
     @Override
     public void printGeneralInfo(){
         System.out.print(name + " " + "$" + price + "\n");
