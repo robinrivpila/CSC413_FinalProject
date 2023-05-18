@@ -1,13 +1,28 @@
+import java.time.LocalDate;
+
+/**
+ *The Beverage class implements the IRestaurantItem
+ * interface. It stores important information about
+ * a beverage, such as its name, sweetness level,
+ * and its price. It provided methods that allow
+ * other classes to access the member variables that
+ * are private.
+ */
 public class Beverage implements IRestaurantItem{
     private String name;
     private int sweetnessLevel;
-    private IceLevel iceLevel;
     private double price;
 
-    public Beverage(String name, int sweetnessLevel, IceLevel iceLevel, double price){
+    /**
+     * Class constructor
+     * @param name
+     * @param sweetnessLevel
+     * @param price
+     */
+    public Beverage(String name, int sweetnessLevel, double price){
         this.name = name;
         this.sweetnessLevel = sweetnessLevel;
-        this.iceLevel = iceLevel;
+
         this.price = price;
     }
 
@@ -19,14 +34,6 @@ public class Beverage implements IRestaurantItem{
         return sweetnessLevel;
     }
 
-    String getIceLevelString(){
-        return iceLevel.name();
-    }
-
-    IceLevel getIceLevel(){
-        return iceLevel;
-    }
-
     @Override
     public double getPrice(){
         return price;
@@ -35,8 +42,8 @@ public class Beverage implements IRestaurantItem{
     public void printItemInfo() {
         System.out.println("\n" + name +
                 " $" + price +
-                "\n"  + "\t-" + sweetnessLevel + " sweetness" +
-                "\n" + "\t-" + iceLevel.name() + " ice");
+                "\n"  + "\t-" + sweetnessLevel + "%" + " sweetness"
+        );
     }
 
     @Override
