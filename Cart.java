@@ -17,7 +17,12 @@ public class Cart {
     private LocalDate date;
 
     /**
-     * Class constructor that initializes
+     * Class constructor that initializes the
+     * subtotal, total, and tip to 0 every
+     * time that a cart is created. It also
+     * initializes the array list that holds the
+     * IRestaurantItem objects aswell as the
+     * current date that the cart was made.
      */
     public Cart(){
         subtotal = 0;
@@ -27,6 +32,15 @@ public class Cart {
         date = LocalDate.now();
     }
 
+    /**
+     * The addItem() method adds an item to the
+     * cart ArrayList and also adds the amount of the
+     * new item to the subtotal of the cart.
+     * @param newItem IRestaurantItem holds the
+     *                data of the new restaurant
+     *                item that will be added to
+     *                the current cart.
+     */
     public void addItem(IRestaurantItem newItem){
         cart.add(newItem);
         subtotal += newItem.getPrice();
@@ -68,19 +82,35 @@ public class Cart {
     public void setTotal(double newTotal){
         this.total = newTotal;
     }
+
+    /**
+     * The calculateCartTotal() method computes the
+     * sum of the subtotal and tip.
+     * @return double the cart total.
+     */
     public double calculateCartTotal(){
         total = subtotal + tip;
         return total;
     }
 
-    public void resetCart()
-    {
+    /**
+     * The resetCart() method clears the cart
+     * arraylist as well as resets the subtotal,
+     * total, and tip value to 0.
+     */
+    public void resetCart() {
         cart.clear();
         subtotal = 0;
         total = 0;
         tip = 0;
     }
 
+    /**
+     * The printCartContents() method prints
+     * out the Date that the cart was opened.
+     * It also prints out all of the cart
+     * contents, the subtotal, tip, and total.
+     */
     public void printCartContents(){
         System.out.println("DATE: " + date);
         System.out.println("----------CART ITEM(S)----------");
@@ -93,6 +123,11 @@ public class Cart {
         System.out.println("--------------------------------");
     }
 
+    /**
+     * The printBill() method prints out the
+     * full carts contents, the tip, and the
+     * full carts totals.
+     */
     public void printBill(){
         printCartContents();
         System.out.printf("TIP: %.2f\n", tip );
@@ -101,6 +136,18 @@ public class Cart {
         System.out.println("--------------------------------");
     }
 
+    /**
+     * The calculateTip method takes a double
+     * input and converts it to the decimal
+     * equivalent and uses this to calculate
+     * the desired tip amount and returns the
+     * value.
+     * @param percent is a double value of the
+     *                tip percentage that the
+     *                user chooses.
+     * @return double tip and returns the double
+     * value of the tip.
+     */
     public double calculateTip(double percent){
         double percentToDecimal = percent * .01;
         tip = subtotal*percentToDecimal;
