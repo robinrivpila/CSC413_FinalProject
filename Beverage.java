@@ -22,9 +22,11 @@ public class Beverage implements IRestaurantItem{
      * @param price
      */
     public Beverage(String name, int sweetnessLevel, double price){
+
         this.name = name;
         this.sweetnessLevel = sweetnessLevel;
         this.price = price;
+
     }
 
     String getName(){

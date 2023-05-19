@@ -25,11 +25,13 @@ public class Cart {
      * current date that the cart was made.
      */
     public Cart(){
+
         subtotal = 0;
         total = 0;
         tip = 0;
         cart = new ArrayList<IRestaurantItem>();
         date = LocalDate.now();
+
     }
 
     /**
@@ -42,8 +44,10 @@ public class Cart {
      *                the current cart.
      */
     public void addItem(IRestaurantItem newItem){
+
         cart.add(newItem);
         subtotal += newItem.getPrice();
+
     }
 
     public ArrayList<IRestaurantItem> getCart(){
@@ -89,8 +93,10 @@ public class Cart {
      * @return double the cart total.
      */
     public double calculateCartTotal(){
+
         total = subtotal + tip;
         return total;
+
     }
 
     /**
@@ -99,10 +105,12 @@ public class Cart {
      * total, and tip value to 0.
      */
     public void resetCart() {
+
         cart.clear();
         subtotal = 0;
         total = 0;
         tip = 0;
+
     }
 
     /**
@@ -112,15 +120,19 @@ public class Cart {
      * contents, the subtotal, tip, and total.
      */
     public void printCartContents(){
+
         System.out.println("DATE: " + date);
         System.out.println("----------CART ITEM(S)----------");
+
         for(int i = 0; i < cart.size(); i ++){
+
             cart.get(i).printItemInfo();
 
         }
 
         System.out.printf("SUBTOTAL: $%.2f\n", subtotal );
         System.out.println("--------------------------------");
+
     }
 
     /**
@@ -129,11 +141,14 @@ public class Cart {
      * full carts totals.
      */
     public void printBill(){
+
         printCartContents();
+
         System.out.printf("TIP: %.2f\n", tip );
         System.out.println("--------------------------------");
         System.out.printf("TOTAL: %.2f\n",  calculateCartTotal());
         System.out.println("--------------------------------");
+
     }
 
     /**
@@ -149,16 +164,12 @@ public class Cart {
      * value of the tip.
      */
     public double calculateTip(double percent){
+
         double percentToDecimal = percent * .01;
         tip = subtotal*percentToDecimal;
+
         return tip;
+
     }
-
-
-
-
-
-
-
 }
 

@@ -56,7 +56,7 @@ public class Dessert implements IRestaurantItem{
     /**
      * This method prints out the general information
      * about the object, and that includes only
-     * the name of the beverage and its price.
+     * the name of the dessert and its price.
      */
     @Override
     public void printGeneralInfo() {
